@@ -45,7 +45,6 @@ export default class Field {
   clickHole(callback) {
     this.clickEvent = (e) => {
       const isCurrent = e.target.closest('.hole') === this.currentElement;
-      console.log(isCurrent);
       if (callback !== undefined) {
         callback(isCurrent);
       }

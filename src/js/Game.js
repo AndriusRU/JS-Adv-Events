@@ -3,7 +3,6 @@ import Field from './Field';
 import Goblin from './Goblin';
 import Count from './Count';
 
-
 export default class Game {
   constructor(boardSize) {
     this.boardSize = boardSize;
@@ -13,18 +12,16 @@ export default class Game {
     this.field = new Field(this.boardSize);
     this.field.drawHoles();
     this.counts = new Count();
-    this.registerEvents();
     this.onClickHole = this.clickMy.bind(this);
     document.querySelectorAll('.hole').forEach((item) => {
       item.addEventListener('click', this.onClickHole);
-    })
+    });
     this.play();
   }
 
   play() {
     this.counts.init();
     setTimeout(function run() {
-
       if (this.counts.getMiss() !== 5) {
         this.field.clearField();
         this.curHole = this.field.getHole();
@@ -32,23 +29,16 @@ export default class Game {
         setTimeout(run.bind(this), 1000);
       }
     }.bind(this), 1000);
-    
   }
 
-  registerEvents() {
-    
-    this.field.clickHole((isCurrent) => {
-      console.log(isCurrent);
-      if (isCurrent) {
-        this.score.increaseHit();
-        this.field.remClick();
-      }
-    });
+  static endGame() {
+    const end = document.querySelector('.endGame');
+    end.classList.add('active');
   }
 
   clickMy(event) {
-    const target = event.target;
-    const isGoblin = target.closest('.hole').querySelector('img');
+    const myTarget = event.target;
+    const isGoblin = myTarget.closest('.hole').querySelector('img');
     if (isGoblin) {
       this.counts.increaseHit();
     } else {
@@ -59,14 +49,7 @@ export default class Game {
       this.endGame();
       document.querySelectorAll('.hole').forEach((item) => {
         item.removeEventListener('click', this.onClickHole);
-      })
+      });
     }
-  }
-
-
-
-  endGame() {
-    const endGame = document.querySelector('.endGame');
-    endGame.classList.add('active');
   }
 }

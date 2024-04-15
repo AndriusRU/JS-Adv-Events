@@ -12,12 +12,12 @@ export default class Count {
   }
 
   increaseHit() {
-    this.curHits++;
+    this.curHits += 1;
     this.countHit.innerHTML = this.curHits;
   }
 
   increaseMiss() {
-    this.curMiss++;
+    this.curMiss += 1;
     this.countMiss.innerHTML = this.curMiss;
   }
 

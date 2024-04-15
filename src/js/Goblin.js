@@ -9,7 +9,6 @@ export default class Goblin {
 
   static goblinThere(place) {
     if (place.children[0] && place.querySelector('img')) {
-      console.log('ttt');
       return true;
     }
     return false;
