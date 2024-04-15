@@ -1,0 +1,51 @@
+body {
+    color: #999;
+}
+
+img {
+    position: relative;
+    object-fit:cover;
+}
+
+.field {
+    width: 570px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 30px;
+}
+
+.hole {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    background-color: rgb(148, 163, 183);
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: url(../img/hammer\ \(4\).png), cell;
+}
+
+.title {
+    font: 300 30px;
+    text-align: center;
+    color:cornflowerblue;
+    margin-bottom: 20px;
+}
+
+.points {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.endGame {
+    display: none;
+    
+}
+
+.endGame.active {
+    display: block;
+    text-align: center;
+}
+
