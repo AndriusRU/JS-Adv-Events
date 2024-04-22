@@ -31,7 +31,7 @@ export default class Game {
     }.bind(this), 1000);
   }
 
-  static endGame() {
+  endGame() {
     const end = document.querySelector('.endGame');
     end.classList.add('active');
   }
